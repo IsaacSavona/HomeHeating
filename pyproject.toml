@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "homeheating"
+version = "0.1.0"
+description = "A simple home heating model to practice system identification and control concepts"
+authors = ["IsaacSavona <isaacsavona@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.14"
+numpy = "^2.1.2"
+scipy = "^1.14.1"
+matplotlib = "^3.9.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
