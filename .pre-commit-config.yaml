@@ -6,7 +6,7 @@ repos:
     -   id: check-added-large-files
         # but no large files anywhere ;)
         files: ''
-        exclude: ".*getting_started.ipynb"
+        exclude: ""
 -   repo: local
     hooks:
       - id: ruff_format
@@ -21,7 +21,7 @@ repos:
         entry: poetry run ruff check
         language: system
         types: [python]
-        files: '^cfspopcon/'
+        files: '^homeheating/'
 -   repo: local
     hooks:
       - id: mypy
@@ -29,13 +29,5 @@ repos:
         entry: poetry run mypy
         language: system
         types: [python]
-        files: '^cfspopcon/'
-        exclude: ^cfspopcon/plotting
--   repo: local
-    hooks:
-      - id: check_variables
-        name: Check variables
-        entry: poetry run python tests/utils/variable_consistency_checker.py --run
-        language: system
-        pass_filenames: false
-        always_run: true
+        files: '^homeheating/'
+        exclude: ''
