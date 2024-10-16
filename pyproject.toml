@@ -12,6 +12,7 @@ scipy = "^1.14.1"
 matplotlib = "^3.9.2"
 pre-commit = "^4.0.1"
 pre-commit-hooks = "^5.0.0"
+pytest = "^8.3.3"
 
 
 [tool.poetry.group.dev.dependencies]

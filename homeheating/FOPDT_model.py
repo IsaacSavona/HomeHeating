@@ -1,5 +1,5 @@
 from random import uniform
-from heating_model import HeatingModel
+from .heating_model import HeatingModel
 
 
 class FOPDTModel(HeatingModel):
@@ -28,7 +28,7 @@ class FOPDTModel(HeatingModel):
         dydt = 0
 
         # calculate derivative
-        dydt = (-y + Kp * u * (t - thetap)) / (taup)
+        dydt = (-y + Kp * u * (t - thetap)) / (taup) + self.noise
 
         return dydt
 
