@@ -15,22 +15,26 @@ def register_model(model_type: str):
 
 
 class HeatingModel:
-    def __init__(self, model_type: str, add_noise: bool, sample_time: float):
+    def __init__(
+        self, model_type: str, add_noise: bool, sample_time: float, time_steps: int
+    ):
         # Lookup the model type in the registry
         model_class = model_registry.get(model_type)
         if model_class is None:
             raise ValueError(f"Model type '{model_type}' is not registered.")
 
-        # Initialize the model
-        self.__model = model_class()
         self.add_noise = add_noise
         self.sample_time = sample_time
+        self.time_steps = time_steps  # number of time steps in simulation
         self.__noise_stdev = 0.0  # default added noise is no noise
         self.__noise_avg = 0.0  # default added noise is no noise
 
         if self.add_noise:
             self.__noise_stdev = 1.0
             self.__noise_avg = 0.0
+
+        # Initialize the model and pass necessary parameters (like sample_time)
+        self.model = model_class(self)
 
     # getter method for the standard deviation of the added noise
     @property
