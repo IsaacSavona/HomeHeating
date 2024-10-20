@@ -220,6 +220,20 @@ unicode = ["unicodedata2 (>=15.1.0)"]
 woff = ["brotli (>=1.0.1)", "brotlicffi (>=0.8.0)", "zopfli (>=0.1.4)"]
 
 [[package]]
+name = "gekko"
+version = "1.2.1"
+description = "Machine learning and optimization for dynamic systems"
+optional = false
+python-versions = ">=2.6"
+files = [
+    {file = "gekko-1.2.1-py3-none-any.whl", hash = "sha256:dfcaad7aaf06b0bc53a90547a5aa415b0de43b93b2443093a1afc7979fadc256"},
+    {file = "gekko-1.2.1.tar.gz", hash = "sha256:6b7232eb507725d74b7848a569ae59d2c9907a98e47f236be26382131fb52e53"},
+]
+
+[package.dependencies]
+numpy = ">=1.8"
+
+[[package]]
 name = "identify"
 version = "2.6.1"
 description = "File identification library for Python"
@@ -1045,4 +1059,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.14"
-content-hash = "e9531962adf82320f52eb6aa58f97c01e4e35c744188d85daad0ddf274620256"
+content-hash = "20b5c56dae0a9b1b1a26647250a276ea97e6b84f7c344a804ab6bfc02219f57a"

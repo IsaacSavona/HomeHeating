@@ -1,10 +1,30 @@
 import random
 
+# A global registry to store model types
+model_registry = {}
+
+
+def register_model(model_type: str):
+    """Decorator to register a new model class."""
+
+    def decorator(cls):
+        model_registry[model_type] = cls
+        return cls
+
+    return decorator
+
 
 class HeatingModel:
-    def __init__(self, model_type, add_noise):
-        self.model_type = model_type
+    def __init__(self, model_type: str, add_noise: bool, sample_time: float):
+        # Lookup the model type in the registry
+        model_class = model_registry.get(model_type)
+        if model_class is None:
+            raise ValueError(f"Model type '{model_type}' is not registered.")
+
+        # Initialize the model
+        self.__model = model_class()
         self.add_noise = add_noise
+        self.sample_time = sample_time
         self.__noise_stdev = 0.0  # default added noise is no noise
         self.__noise_avg = 0.0  # default added noise is no noise
 
@@ -19,7 +39,7 @@ class HeatingModel:
 
     # setter method for the standard deviation of the added noise
     @noise_stdev.setter
-    def set_noise_stdev(self, noise_stdev):
+    def set_noise_stdev(self, noise_stdev: float):
         if noise_stdev < 0:
             raise ValueError("Sorry you cannot have a negative standard deviation")
 
@@ -32,7 +52,7 @@ class HeatingModel:
 
     # setter method for the average of the added noise
     @noise_avg.setter
-    def set_noise_avg(self, noise_avg):
+    def set_noise_avg(self, noise_avg: float):
         self.__noise_avg = noise_avg
 
     # random noise property which can be added to a system
